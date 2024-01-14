@@ -8,8 +8,8 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
 
-  <div class="max-w-md p-6 bg-white rounded-md shadow-md">
-    <h1 class="text-2xl font-bold mb-4">Random Shoti Video</h1>
+  <div class="max-w-2xl p-6 bg-white rounded-md shadow-md">
+    <h1 class="text-3xl font-bold mb-4">Random Shoti Video</h1>
     <button class="bg-blue-500 text-white px-4 py-2 rounded-md mb-4" onclick="generateVideo()">Generate Video</button>
     
     <div id="video-container"></div>
@@ -19,7 +19,7 @@
   <script>
     async function generateVideo() {
       const apiUrl = "https://your-shoti-api.vercel.app/api/v1/get";
-      const apiKey = "$shoti-1hk46gf5vb1o5qbkgh";
+      const apiKey = "YOUR_API_KEY";
 
       try {
         const { data } = await axios.post(apiUrl, { apikey: apiKey });
