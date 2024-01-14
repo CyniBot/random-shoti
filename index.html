@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Shoti</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-200 p-8">
+  <div class="max-w-lg mx-auto bg-white p-6 rounded-md shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Random Shoti</h1>
+    <div id="shoti-info" class="space-y-2">
+      <!-- Shoti details will be displayed here -->
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    async function getRandomShoti() {
+      const apiUrl = "https://your-shoti-api.vercel.app/api/v1/get";
+      const apiKey = "YOUR_API_KEY";
+
+      try {
+        const response = await axios.post(apiUrl, { apikey: apiKey });
+        const shotiData = response.data.data;
+
+        // Update HTML with shoti details
+        document.getElementById("shoti-info").innerHTML = `
+          <p><strong>Title:</strong> ${shotiData.title}</p>
+          <p><strong>Region:</strong> ${shotiData.region}</p>
+          <p><strong>Duration:</strong> ${shotiData.duration}</p>
+          <p><strong>User:</strong> ${shotiData.user.username}</p>
+          <p><strong>Nickname:</strong> ${shotiData.user.nickname}</p>
+        `;
+      } catch (error) {
+        console.error("Error fetching random Shoti", error);
+      }
+    }
+
+    // Load a random Shoti on page load
+    window.onload = getRandomShoti;
+  </script>
+</body>
+
+</html>
